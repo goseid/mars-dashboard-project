@@ -8,7 +8,7 @@ body {
 }
 
 header {
-  /* header styles */
+  text-align: center;
 }
 
 main {
@@ -17,13 +17,26 @@ main {
 }
 
 footer {
-  /* footer styles */
+  text-align: center;
+}
+
+.btn-rover {
+  display: inline-block;
+  width: 40%;
+  min-width: 140px;
+  margin: 2px;
 }
 
 /* -------------------  TABLET  --------------------- */
 @media (min-width: 768px) {
   /* use mobile */
-}
+  .btn-rover {
+    display: inline-block;
+    width: 20%;
+    min-width: 140px;
+    margin: 2px;
+  }
+  }
 
 /* -------------------  DESKTOP  -------------------- */
 
