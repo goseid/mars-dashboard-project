@@ -1,7 +1,7 @@
 let store = {
   user: { name: "Student" },
   apod: "",
-  rovers: ["Curiosity", "Opportunity", "Spirit"],
+  rovers: ["Curiosity", "Opportunity", "Spirit", "Perseverance"],
 };
 
 // add our markup to the page
@@ -19,9 +19,8 @@ const render = async (root, state) => {
 // create content
 const App = (state) => {
   let { rovers, apod } = state;
-
   return `
-        <header></header>
+        <header>${roverButtons(rovers)}</header>
         <main>
             ${Greeting(store.user.name)}
             <section>
@@ -48,7 +47,16 @@ window.addEventListener("load", () => {
 });
 
 // ------------------------------------------------------  COMPONENTS
+// Pure function that renders rover buttons
+const roverButtons = (rovers) => {
+  const reducer = (a, c) =>
+    (a += `<button class="btn-rover" onClick="roverButtonHandler('${c}')" >${c}</button>`);
+  return rovers.reduce(reducer, "");
+};
 
+const roverButtonHandler = (rover) => {
+  console.log("roverButtonHandler called by:", rover);
+};
 // Pure function that renders conditional information -- THIS IS JUST AN EXAMPLE, you can delete it.
 const Greeting = (name) => {
   if (name) {
