@@ -56,6 +56,7 @@ const roverButtons = (rovers) => {
 
 const roverButtonHandler = (rover) => {
   console.log("roverButtonHandler called by:", rover);
+  getPhotos(rover);
 };
 // Pure function that renders conditional information -- THIS IS JUST AN EXAMPLE, you can delete it.
 const Greeting = (name) => {
@@ -101,6 +102,12 @@ const ImageOfTheDay = (apod) => {
 
 // ------------------------------------------------------  API CALLS
 
+const getPhotos = (rover, state) => {
+  console.log("fetching...", rover);
+  fetch(`http://localhost:3000/rovers?rover=${rover}`)
+    .then((res) => res.json())
+    .then((data) => console.dir(data));
+};
 // Example API call
 const getImageOfTheDay = (state) => {
   let { apod } = state;
@@ -109,7 +116,7 @@ const getImageOfTheDay = (state) => {
     .then((res) => res.json())
     .then((apod) => updateStore(store, { apod }));
 
-  // console.log to obviate run away request
+  // console.log to manifest run away requests
   console.log("Requested apod image at", Date());
   return;
 };
